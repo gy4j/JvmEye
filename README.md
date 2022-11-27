@@ -198,7 +198,7 @@ new EyeClient(ByteBuddyAgent.install(), "DemoSimple", "localhost", 5555);
 
 3. 启动待诊断项目（使用DEMO项目，或者参考集成方式集成自己的待诊断项目，最好选用集成方式3或者4，方便断点调试）
 
-4. 访问诊断界面http://localhost:8080进行验证和功能开发
+4. 访问诊断界面 http://localhost:8080 进行验证和功能开发
 
    
 
