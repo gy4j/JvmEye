@@ -1,0 +1,174 @@
+@import './element-ui.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  overflow-y: scroll;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+//vue router transition css
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .2s ease
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+//main-container全局样式
+.app-main {
+  min-height: 100%;
+}
+
+.app-container {
+  padding: 20px;
+}
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+p {
+  margin: 0px;
+}
+
+span[data-label="emphasis_dot"] {
+  text-emphasis-style: dot;
+  text-emphasis-position: under left;
+  -webkit-text-emphasis-style: dot;
+  -webkit-text-emphasis-position: under left;
+}
+
+span[data-label="emphasis_wave"] {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  -webkit-text-decoration-style: wavy;
+}
+
+span[data-label="blank"] {
+  border-bottom: 2px solid #333;
+}
+
+span[data-label="bracket"]:before {
+  content: "(";
+}
+
+span[data-label="bracket"]:after {
+  content: ")";
+}
+
+.indent-1 {
+  text-indent: 1em;
+}
+
+.indent-2 {
+  text-indent: 2em;
+}
+
+.indent-3 {
+  text-indent: 3em;
+}
+
+span[data-blank-length="1"]:after {
+  content: "\00A0\00A0\00A0";
+}
+
+span[data-blank-length="2"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="3"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="4"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="5"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="6"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="7"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="8"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="9"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+span[data-blank-length="10"]:after {
+  content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
+}
+
+.quizPutTag {
+  display: inline-block;
+  *display: inline;
+  padding: 3px 10px 1px 10px;
+  margin: 0 3px;
+  font-size: 14px;
+  min-width: 1em;
+  min-height: 16px;
+  line-height: 18px;
+  height: auto;
+  border-bottom: 1px solid #0033FF;
+  text-decoration: none;
+  zoom: 1;
+  color: #127176;
+  word-break: break-all;
+}

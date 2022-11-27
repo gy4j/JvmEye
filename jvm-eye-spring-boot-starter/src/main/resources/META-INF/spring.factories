@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.gy4j.jvm.eye.spring.boot.starter.EyeConfiguration

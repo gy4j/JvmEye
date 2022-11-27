@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: DemoSpringBoot
+jvm:
+  eye:
+    host: localhost
+    port: 5555
+    enable: true
+server:
+  port: 9091
