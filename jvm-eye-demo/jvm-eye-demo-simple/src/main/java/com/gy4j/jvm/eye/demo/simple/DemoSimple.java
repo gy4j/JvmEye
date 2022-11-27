@@ -25,7 +25,8 @@ public class DemoSimple {
     private int illegalArgumentCount = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        new EyeClient(ByteBuddyAgent.install(), "DemoSimple", "localhost", 5555);
+        // 指定clientName为DemoSimple，指定server的ip（localhost）和port（5555）
+//        new EyeClient(ByteBuddyAgent.install(), "DemoSimple", "localhost", 5555);
         DemoSimple demo = new DemoSimple();
         while (true) {
             demo.run();

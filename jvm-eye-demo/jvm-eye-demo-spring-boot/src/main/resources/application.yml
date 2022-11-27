@@ -1,10 +1,10 @@
 spring:
   application:
-    name: DemoSpringBoot
+    name: DemoSpringBoot # clientName
 jvm:
   eye:
-    host: localhost
-    port: 5555
-    enable: true
+    host: localhost # server的ip
+    port: 5555 # server的port
+    enable: true # 是否开启诊断，默认false
 server:
   port: 9091
