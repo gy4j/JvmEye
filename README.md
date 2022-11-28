@@ -5,7 +5,21 @@
 
 该平台由个人花费业余时间肝出来的，没有经过系统全面的测试，勿应用于生产环境。平台的登录认证、权限管理以及审计相关都没有实现，有需要的可以自行基于server层进行扩展。
 
-详细说明见CSDN：https://blog.csdn.net/m0_51510818/article/details/128079151
+
+
+CSDN博客：
+
+[JvmEye-一款基于Arthas重构的Java诊断平台](https://blog.csdn.net/m0_51510818/article/details/128079151?spm=1001.2014.3001.5501)
+
+[JvmEye-功能介绍](https://blog.csdn.net/m0_51510818/article/details/128081698?spm=1001.2014.3001.5501)
+
+
+
+Gihub：
+
+[JvmEye的功能介绍](https://github.com/gy4j/JvmEye/blob/master/tutorials/%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D.md)
+
+
 
 
 # 平台架构
