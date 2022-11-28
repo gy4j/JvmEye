@@ -5,7 +5,8 @@
 
 该平台由个人花费业余时间肝出来的，没有经过系统全面的测试，勿应用于生产环境。平台的登录认证、权限管理以及审计相关都没有实现，有需要的可以自行基于server层进行扩展。
 
-图片不显示需要设置host，参考：https://blog.csdn.net/CSDN_Gao_16/article/details/126203665
+详细说明见CSDN：https://blog.csdn.net/m0_51510818/article/details/128079151
+
 
 # 平台架构
 
