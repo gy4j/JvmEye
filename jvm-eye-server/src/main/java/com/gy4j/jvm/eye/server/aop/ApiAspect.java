@@ -8,6 +8,10 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author gy4j
@@ -31,7 +35,13 @@ public class ApiAspect {
 //            if (SessionHelper.getSessionUserId() == null) {
 //                return ResponseWrapper.notAuth();
 //            }
-            log.info("请求：" + JsonUtils.toJson(pjp.getArgs()));
+            String uri = "";
+            try {
+                HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+                uri = request.getRequestURI();
+            } catch (Exception ex) {
+            }
+            log.info("请求：uri={}，args={}", uri, JsonUtils.toJson(pjp.getArgs()));
             Object result = pjp.proceed();
             if (result instanceof ResponseWrapper) {
                 return result;
