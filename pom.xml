@@ -38,6 +38,13 @@
         <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:gy4j/JvmEye.git</connection>
+        <developerConnection>scm:git:git@github.com:gy4j/JvmEye.git</developerConnection>
+        <url>https://github.com/gy4j/JvmEye</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
