@@ -80,13 +80,17 @@ public class ThreadSampleInfoVO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        ThreadSampleInfoVO that = (ThreadSampleInfoVO) o;
-        return that.id == id && that.name.equals(name);
+
+        ThreadSampleInfoVO threadVO = (ThreadSampleInfoVO) o;
+
+        if (id != threadVO.id) return false;
+        return name != null ? name.equals(threadVO.name) : threadVO.name == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, name);
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }

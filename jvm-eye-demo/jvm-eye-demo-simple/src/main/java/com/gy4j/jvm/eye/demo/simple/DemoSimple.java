@@ -26,7 +26,7 @@ public class DemoSimple {
 
     public static void main(String[] args) throws InterruptedException {
         // 指定clientName为DemoSimple，指定server的ip（localhost）和port（5555）
-//        new EyeClient(ByteBuddyAgent.install(), "DemoSimple", "localhost", 5555);
+        new EyeClient(ByteBuddyAgent.install(), "DemoSimple", "localhost", 5555);
         DemoSimple demo = new DemoSimple();
         while (true) {
             demo.run();
