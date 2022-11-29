@@ -1,5 +1,6 @@
 package com.gy4j.jvm.eye.server.aop;
 
+import com.gy4j.jvm.eye.core.util.JsonUtils;
 import com.gy4j.jvm.eye.server.vo.ResponseWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -30,7 +31,7 @@ public class ApiAspect {
 //            if (SessionHelper.getSessionUserId() == null) {
 //                return ResponseWrapper.notAuth();
 //            }
-
+            log.info("请求：" + JsonUtils.toJson(pjp.getArgs()));
             Object result = pjp.proceed();
             if (result instanceof ResponseWrapper) {
                 return result;
