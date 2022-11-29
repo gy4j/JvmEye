@@ -1,5 +1,6 @@
 package com.gy4j.jvm.eye.demo.spring;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit;
  * 1.0.0     gy4j     ...
  */
 @SpringBootApplication
+@MapperScan("com.gy4j.jvm.eye.demo.spring.mapper")
 public class DemoApplication {
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
     private static Random random = new Random();

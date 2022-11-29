@@ -1,6 +1,24 @@
 spring:
   application:
     name: DemoSpringBoot # clientName
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    username: jvm_eye
+    password: jvm_eye
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:jvm_eye
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.gy4j.jvm.eye.demo.spring.entity
 jvm:
   eye:
     host: localhost # server的ip

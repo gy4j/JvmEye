@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gy4j.jvm.eye.demo.spring.mapper.UserMapper">
+    <!-- 注释一定要使用这种形式，不然会报错-->
+    <select id="selectUser" resultType="com.gy4j.jvm.eye.demo.spring.entity.User">
+        select *
+        from users
+        where name = #{name}
+    </select>
+    <select id="selectUserLike" resultType="com.gy4j.jvm.eye.demo.spring.entity.User">
+        select age
+        from users
+        where name like concat(#{name}, '%')
+    </select>
+</mapper>

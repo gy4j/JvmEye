@@ -1,0 +1,5 @@
+###
+GET http://localhost:9091/user/list
+
+###
+GET http://localhost:9091/user/info?name=J
