@@ -116,7 +116,7 @@ public class EnhancerTransformer implements ClassFileTransformer {
             if (classArray.length > 0) {
                 instrumentation.retransformClasses(classArray);
             }
-        } catch (Exception e) {
+        } catch (Throwable e) {
             affect.setThrowable(e);
         }
 

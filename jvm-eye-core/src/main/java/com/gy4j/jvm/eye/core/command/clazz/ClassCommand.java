@@ -11,6 +11,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author gy4j
@@ -33,11 +34,11 @@ public class ClassCommand extends AbstractCommand {
 
     @Override
     public IResponse executeForResponse(IClient client) {
-        List<Class<?>> classList = ClassLoaderUtils.findClasses(client.getInstrumentation()
+        Set<Class<?>> classSet = ClassLoaderUtils.findClasses(client.getInstrumentation()
                 , className);
 
         List<ClassInfoVO> classInfos = new ArrayList<ClassInfoVO>();
-        for (Class<?> clazz : classList) {
+        for (Class<?> clazz : classSet) {
             classInfos.add(new ClassInfoVO(clazz));
             if (classInfos.size() >= numberOfLimit) {
                 break;

@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author gy4j
@@ -52,16 +53,16 @@ public class VmToolCommand extends AbstractCommand {
             classLoaderHash = ClassLoaderUtils.getClassLoaderHash(classLoader);
         }
 
-        List<Class<?>> classList = ClassLoaderUtils.findClassesOnly(client.getInstrumentation(), className, classLoaderHash);
+        Set<Class<?>> classSet = ClassLoaderUtils.findClassesOnly(client.getInstrumentation(), className, classLoaderHash);
 
 
-        if (classList.size() == 0) {
+        if (classSet.size() == 0) {
             return BaseResponse.fail("找不到类：" + className, VmToolResponse.class);
         }
-        if (classList.size() > 1) {
+        if (classSet.size() > 1) {
             return BaseResponse.fail("找到的类数>1：" + className, VmToolResponse.class);
         }
-        Class<?> clazz = classList.get(0);
+        Class<?> clazz = classSet.iterator().next();
         VmTool vmTool = VmTool.getInstance();
         Object[] instances = vmTool.getInstances(clazz, 10);
         if (instances.length == 0) {

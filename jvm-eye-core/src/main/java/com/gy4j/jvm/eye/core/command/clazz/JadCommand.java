@@ -57,18 +57,18 @@ public class JadCommand extends AbstractCommand {
     @Override
     public IResponse executeForResponse(IClient client) {
 
-        List<Class<?>> clazzList = ClassLoaderUtils.findClassesOnly(client.getInstrumentation()
+        Set<Class<?>> clazzSet = ClassLoaderUtils.findClassesOnly(client.getInstrumentation()
                 , className, classLoaderHash);
 
-        if (clazzList.size() == 0) {
+        if (clazzSet.size() == 0) {
             return createExceptionResponse("not find any classes:" + JsonUtils.toJson(this));
-        } else if (clazzList.size() > 1) {
-            return createExceptionResponse("find more than one class:" + clazzList.size());
+        } else if (clazzSet.size() > 1) {
+            return createExceptionResponse("find more than one class:" + clazzSet.size());
         } else {
-            Class<?> clazz = clazzList.get(0);
+            Class<?> clazz = clazzSet.iterator().next();
             SourceInfoVO sourceInfo = new SourceInfoVO();
             // 找内部类列表
-            List<Class<?>> withInnerClasses = ClassLoaderUtils.findClasses(client.getInstrumentation()
+            Set<Class<?>> withInnerClasses = ClassLoaderUtils.findClasses(client.getInstrumentation()
                     , clazz.getName() + "$", classLoaderHash);
 
             // 聚合需要反编译的类集合

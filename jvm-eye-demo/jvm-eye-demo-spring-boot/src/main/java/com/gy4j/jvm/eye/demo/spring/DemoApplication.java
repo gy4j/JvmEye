@@ -24,7 +24,6 @@ public class DemoApplication {
     private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
     private static Random random = new Random();
     private int illegalArgumentCount = 0;
-
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
         DemoApplication demo = new DemoApplication();
@@ -75,7 +74,6 @@ public class DemoApplication {
                 i++;
             }
         }
-
         return result;
     }
 }

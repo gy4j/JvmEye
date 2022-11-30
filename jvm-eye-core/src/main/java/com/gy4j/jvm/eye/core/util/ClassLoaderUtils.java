@@ -3,9 +3,9 @@ package com.gy4j.jvm.eye.core.util;
 import com.gy4j.jvm.eye.core.constant.EyeConstants;
 
 import java.lang.instrument.Instrumentation;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * @author gy4j
@@ -40,10 +40,10 @@ public final class ClassLoaderUtils {
      * @param className
      * @return
      */
-    public static List<Class<?>> findClasses(Instrumentation instrumentation
+    public static Set<Class<?>> findClasses(Instrumentation instrumentation
             , String className) {
         if (StringUtils.isBlank(className)) {
-            return Collections.emptyList();
+            return Collections.emptySet();
         }
         return findClasses(instrumentation, className, null);
     }
@@ -56,10 +56,10 @@ public final class ClassLoaderUtils {
      * @param classLoaderHash
      * @return
      */
-    public static List<Class<?>> findClasses(Instrumentation instrumentation
+    public static Set<Class<?>> findClasses(Instrumentation instrumentation
             , String className, String classLoaderHash) {
         Class<?>[] loadedClasses = instrumentation.getAllLoadedClasses();
-        List<Class<?>> clazzList = new ArrayList<Class<?>>();
+        Set<Class<?>> clazzSet = new LinkedHashSet<>();
         for (Class<?> clazz : loadedClasses) {
             // 检查累加器是否匹配
             if (classLoaderHash != null) {
@@ -68,12 +68,13 @@ public final class ClassLoaderUtils {
                     continue;
                 }
             }
+
             // 检查类名是否匹配
             if (clazz.getName().indexOf(className) != -1) {
-                clazzList.add(clazz);
+                clazzSet.add(clazz);
             }
         }
-        return clazzList;
+        return clazzSet;
     }
 
     /**
@@ -84,10 +85,10 @@ public final class ClassLoaderUtils {
      * @param classLoaderHash
      * @return
      */
-    public static List<Class<?>> findClassesOnly(Instrumentation instrumentation
+    public static Set<Class<?>> findClassesOnly(Instrumentation instrumentation
             , String className, String classLoaderHash) {
         Class<?>[] loadedClasses = instrumentation.getAllLoadedClasses();
-        List<Class<?>> clazzList = new ArrayList<Class<?>>();
+        Set<Class<?>> clazzList = new LinkedHashSet<>();
         for (Class<?> clazz : loadedClasses) {
             String hash = ClassLoaderUtils.getClassLoaderHash(clazz.getClassLoader());
             if (clazz.getName().equals(className)

@@ -11,6 +11,7 @@ import lombok.Data;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author gy4j
@@ -32,10 +33,10 @@ public class MethodCommand extends AbstractCommand {
 
     @Override
     public IResponse executeForResponse(IClient client) {
-        List<Class<?>> classList = ClassLoaderUtils.findClasses(client.getInstrumentation()
+        Set<Class<?>> classSet = ClassLoaderUtils.findClasses(client.getInstrumentation()
                 , className);
         List<MethodInfoVO> methods = new ArrayList<MethodInfoVO>();
-        for (Class<?> clazz : classList) {
+        for (Class<?> clazz : classSet) {
             try {
                 for (Method method : clazz.getDeclaredMethods()) {
                     if (method.getName().indexOf(methodName) != -1) {

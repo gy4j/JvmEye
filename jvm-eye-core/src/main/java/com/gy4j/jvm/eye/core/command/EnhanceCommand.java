@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.instrument.Instrumentation;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author gy4j
@@ -49,9 +50,9 @@ public abstract class EnhanceCommand extends AbstractCommand {
     public IResponse executeForResponse(IClient client) {
         try {
             Instrumentation instrumentation = client.getInstrumentation();
-            List<Class<?>> clazzList = ClassLoaderUtils.findClassesOnly(instrumentation, className, classLoaderHash);
+            Set<Class<?>> clazzSet = ClassLoaderUtils.findClassesOnly(instrumentation, className, classLoaderHash);
 
-            EnhancerTransformer enhancerTransformer = new EnhancerTransformer(new HashSet<Class<?>>(clazzList)
+            EnhancerTransformer enhancerTransformer = new EnhancerTransformer(clazzSet
                     , methodName, getAdviceListener(client), isTracing(), isSkipJDKTrace());
 
             EnhancerAffect enhancerAffect = enhancerTransformer.enhance(instrumentation);

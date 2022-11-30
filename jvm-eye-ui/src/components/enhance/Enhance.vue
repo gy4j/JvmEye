@@ -2,7 +2,7 @@
   <el-container>
     <el-aside width="600px" style="text-align: left;overflow-x: hidden">
       <el-form ref="form" :model="methodInfo" label-width="150px">
-        <el-form-item label="类型">
+        <el-form-item label="类型(不兼容jrebel)">
           <el-radio-group v-model="methodInfo.enhanceType">
             <el-radio-button label="stack"></el-radio-button>
             <el-radio-button label="trace"></el-radio-button>

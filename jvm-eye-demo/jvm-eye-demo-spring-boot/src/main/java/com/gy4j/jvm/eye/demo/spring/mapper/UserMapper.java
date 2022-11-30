@@ -13,6 +13,5 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserMapper extends BaseMapper<User> {
     User selectUser(@Param("name") String name);
-
     User selectUserLike(@Param("name") String name);
 }

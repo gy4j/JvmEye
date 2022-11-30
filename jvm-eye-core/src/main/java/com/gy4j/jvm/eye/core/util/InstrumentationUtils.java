@@ -39,7 +39,7 @@ public class InstrumentationUtils {
                 }
                 try {
                     inst.retransformClasses(clazz);
-                } catch (Exception e) {
+                } catch (Throwable e) {
                     logger.warn("reTransformClasses class error, name: {}", clazz.getName(), e);
                 }
             }
