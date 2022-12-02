@@ -1,5 +1,35 @@
-###
-GET http://localhost:9091/user/list
+### 线程 cpu-100  测试启动
+GET http://localhost:9091/test/thread/startCpuTest
 
-###
-GET http://localhost:9091/user/info?name=J
+### 线程 cpu-100  测试停止
+GET http://localhost:9091/test/thread/stopCpuTest
+
+### 线程 synchronized
+GET http://localhost:9091/test/thread/wait01
+
+### 线程 synchronized
+GET http://localhost:9091/test/thread/wait02
+
+### 内存 startMemoryTest
+GET http://localhost:9091/test/memory/startMemoryTest
+
+### 内存 stopMemoryTest
+GET http://localhost:9091/test/memory/stopMemoryTest
+
+### 日志 testLogger
+GET http://localhost:9091/test/logger/testLogger
+
+### 方法 testStack
+GET http://localhost:9091/test/method/testStack
+
+### 方法 testTrace
+GET http://localhost:9091/test/method/testTrace
+
+### 方法 testWatch type=return
+GET http://localhost:9091/test/method/testWatch?type=return&msg=TestReturn
+
+### 方法 testWatch type=throw
+GET http://localhost:9091/test/method/testWatch?type=throw&msg=TestThrow
+
+### 方法 testCall
+GET http://localhost:9091/test/method/testCall?msg=inputMsg

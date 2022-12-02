@@ -1,33 +1,24 @@
 package com.gy4j.jvm.eye.demo.spring.controller;
 
-import com.gy4j.jvm.eye.demo.spring.service.TestService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author gy4j
+ * @author gongy
  * 功能：
- * 日期：2022/11/24-17:19
+ * 日期：2022/12/1
  * 版本       开发者     描述
- * 1.0.0     gy4j     ...
+ * 1.0.0     gongy     ...
  */
 @RestController
-@RequestMapping("test")
-public class TestController {
+@RequestMapping("test/thread")
+public class ThreadTestController {
     private static boolean cpuTestFlag = false;
 
-    @Autowired
-    private TestService testService;
-
-    private List<String> stringList = new ArrayList<>();
-
-    public TestController() {
-        new Thread(new Runnable() {
+    public ThreadTestController() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
@@ -38,7 +29,9 @@ public class TestController {
                     }
                 }
             }
-        }).start();
+        });
+        thread.setName("ThreadTestController-TestThread");
+        thread.start();
     }
 
     public void doLoopForTestCpu() {
@@ -62,31 +55,26 @@ public class TestController {
         return "stopCpuTest";
     }
 
-
-    @RequestMapping("startMemoryTest")
-    public String startMemoryTest() {
-        stringList.clear();
-        for (int i = 0; i < 1000000; i++) {
-            stringList.add(new String("testSting" + i));
+    @RequestMapping("wait01")
+    public String wait01() {
+        String msg = "wait01";
+        synchronized (this) {
+            try {
+                // 阻塞600秒
+                TimeUnit.SECONDS.sleep(600);
+            } catch (InterruptedException e) {
+            }
+            System.out.println(msg);
         }
-        return "startMemoryTest";
+        return "wait01";
     }
 
-
-    @RequestMapping("stopMemoryTest")
-    public String stopMemoryTest() {
-        stringList.clear();
-        return "stopMemoryTest";
-    }
-
-
-    @RequestMapping("testTrace")
-    public String testTrace(String msg) {
-        for (int i = 0; i < 20; i++) {
-            testService.test01();
-            testService.test02();
+    @RequestMapping("wait02")
+    public String wait02() {
+        String msg = "wait02";
+        synchronized (this) {
+            System.out.println(msg);
         }
-        testService.test03();
-        return "testTrace:" + msg;
+        return "wait02";
     }
 }

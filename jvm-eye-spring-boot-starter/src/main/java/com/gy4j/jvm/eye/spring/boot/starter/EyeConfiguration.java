@@ -20,6 +20,9 @@ public class EyeConfiguration {
     @Value("${spring.application.name}")
     private String appName;
 
+    @Value("${spring.profiles.active:}")
+    private String profile;
+
     @Value("${jvm.eye.host:localhost}")
     private String eyeHost;
 
@@ -29,7 +32,7 @@ public class EyeConfiguration {
     @Bean
     public EyeClient eyeClient() {
         EyeClient eyeClient = new EyeClient(ByteBuddyAgent.install()
-                , appName, eyeHost, eyePort);
+                , appName + "_" + profile, eyeHost, eyePort);
         return eyeClient;
     }
 }
