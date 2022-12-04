@@ -13,15 +13,12 @@ CSDN博客：
 
 [JvmEye-基于Arthas重构的Java诊断平台](https://blog.csdn.net/m0_51510818/article/details/128079151?spm=1001.2014.3001.5501)
 
-[JvmEye-功能介绍](https://blog.csdn.net/m0_51510818/article/details/128081698?spm=1001.2014.3001.5501)
-
-
 
 Gihub：
 
 [JvmEye的功能介绍](https://github.com/gy4j/JvmEye/blob/master/tutorials/%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D.md)
 
-
+[JvmEye的实践用例](https://github.com/gy4j/JvmEye/blob/master/tutorials/%E5%AE%9E%E8%B7%B5%E7%94%A8%E4%BE%8B.md)
 
 
 # 平台架构
