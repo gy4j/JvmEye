@@ -10,7 +10,7 @@ import java.io.File;
  * 1.0.0     gy4j     ...
  */
 public class EyeConstants {
-    public static final File OUTPUT_DIRECTION = new File("./output-jvm-eye/");
+    public static final File OUTPUT_DIRECTION = new File("output-jvm-eye/");
 
     public static final String UNKNOWN = "unknown";
     public static final String NONE = "none";
