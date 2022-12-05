@@ -57,16 +57,16 @@ public class VmTool {
                 tmpLibOutputStream = FileUtils.openOutputStream(libFile, false);
                 if (libName != null) {
                     try {
-                        libInputStream = VmTool.class.getResourceAsStream("/lib" + File.separator + libName);
+                        libInputStream = VmTool.class.getResourceAsStream("/lib/" + libName);
                     } catch (Throwable e) {
                         logger.error("can not find VmTool so", e);
                     }
                 }
                 IOUtils.copy(libInputStream, tmpLibOutputStream);
-                logger.debug("copy to {}", libFile);
+                logger.info("copy to {}", libFile);
                 libPath = libFile.getAbsolutePath();
             } catch (Throwable e) {
-                logger.error("try to copy lib error! libName: {}", libName, e);
+                logger.error("try to copy lib error! libName: {}" + libName, e);
             } finally {
                 IOUtils.close(libInputStream);
                 IOUtils.close(tmpLibOutputStream);
