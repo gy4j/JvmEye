@@ -10,6 +10,7 @@ import com.gy4j.jvm.eye.core.util.JsonUtils;
 import com.gy4j.jvm.eye.core.util.SeqUtils;
 import com.gy4j.jvm.eye.core.util.SerializeUtils;
 import com.gy4j.jvm.eye.core.util.SocketChannelUtils;
+import com.gy4j.jvm.eye.core.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class EyeClient implements IClient {
     /**
      * 生成客户端的唯一ID
      */
-    public static final String CLIENT_ID = SeqUtils.getSeq();
+    public String clientId = SeqUtils.getSeq();
     /**
      * EyeClientEyeReactor的创建守护线程
      */
@@ -64,6 +65,19 @@ public class EyeClient implements IClient {
 
     public EyeClient(Instrumentation instrumentation
             , String clientName, String serverHost, int serverPort) {
+        init(instrumentation,clientName,serverHost,serverPort);
+    }
+
+    public EyeClient(Instrumentation instrumentation
+            , String clientName, String serverHost
+            , int serverPort, String clientId) {
+        if (!StringUtils.isBlank(clientId)) {
+            this.clientId = clientId;
+        }
+        init(instrumentation,clientName,serverHost,serverPort);
+    }
+
+    private void init(Instrumentation instrumentation, String clientName, String serverHost, int serverPort) {
         this.instrumentation = instrumentation;
         EnhanceManager.init(instrumentation);
         this.clientName = clientName;
@@ -92,7 +106,7 @@ public class EyeClient implements IClient {
      */
     @Override
     public void write(ICommand command, IResponse response) {
-        response.setClientId(CLIENT_ID);
+        response.setClientId(clientId);
         response.setCommandId(command.getCommandId());
         if (response instanceof IAsyncResponse) {
             ((IAsyncResponse) response).setSessionId(command.getSessionId());
@@ -156,7 +170,7 @@ public class EyeClient implements IClient {
      */
     @Override
     public String getClientId() {
-        return CLIENT_ID;
+        return clientId;
     }
 
     /**
