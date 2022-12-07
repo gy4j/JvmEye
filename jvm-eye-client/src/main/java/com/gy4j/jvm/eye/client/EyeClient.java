@@ -10,6 +10,7 @@ import com.gy4j.jvm.eye.core.util.JsonUtils;
 import com.gy4j.jvm.eye.core.util.SeqUtils;
 import com.gy4j.jvm.eye.core.util.SerializeUtils;
 import com.gy4j.jvm.eye.core.util.SocketChannelUtils;
+import com.gy4j.jvm.eye.core.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class EyeClient implements IClient {
     /**
      * 生成客户端的唯一ID
      */
-    public String clientId = SeqUtils.getSeq();
+    public String clientId;
     /**
      * EyeClientEyeReactor的创建守护线程
      */
@@ -64,20 +65,7 @@ public class EyeClient implements IClient {
 
     public EyeClient(Instrumentation instrumentation
             , String clientName, String serverHost, int serverPort) {
-        init(instrumentation, clientName, serverHost, serverPort, false);
-    }
-
-    public EyeClient(Instrumentation instrumentation
-            , String clientName, String serverHost
-            , int serverPort, boolean randomClientId) {
-        init(instrumentation, clientName, serverHost, serverPort, randomClientId);
-    }
-
-    private void init(Instrumentation instrumentation, String clientName, String serverHost, int serverPort
-            , boolean randomClientId) {
-        if (!randomClientId) {
-            this.clientId = clientName + "_" + serverHost;
-        }
+        this.clientId = StringUtils.getMD5(clientName + serverHost);
         this.instrumentation = instrumentation;
         EnhanceManager.init(instrumentation);
         this.clientName = clientName;

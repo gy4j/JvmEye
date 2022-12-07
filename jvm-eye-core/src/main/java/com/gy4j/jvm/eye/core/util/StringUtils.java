@@ -3,6 +3,9 @@ package com.gy4j.jvm.eye.core.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +19,24 @@ import java.util.List;
 public final class StringUtils {
     private StringUtils() {
 
+    }
+
+    /**
+     * 获取MD5值-36进制
+     *
+     * @param source
+     * @return
+     */
+    public static String getMD5(String source) {
+        // 获取消息摘要算法对象
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            md.update(source.getBytes(), 0, source.length());
+            return new BigInteger(1, md.digest()).toString(36).toUpperCase();
+        } catch (NoSuchAlgorithmException e) {
+            return SeqUtils.getSeq();
+        }
     }
 
     public static boolean isBlank(String val) {
