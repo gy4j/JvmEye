@@ -29,6 +29,41 @@ Gihub：
 
 # 快速体验
 
+下载agent：[jvm-eye-agent-1.0.jar](https://github.com/gy4j/JvmEye/releases/download/untagged-2a1f8538beeb38ce6715/jvm-eye-agent-1.0.jar)
+
+下载server：[jvm-eye-server-1.0.jar](https://github.com/gy4j/JvmEye/releases/download/untagged-2a1f8538beeb38ce6715/jvm-eye-server-1.0.jar)
+
+### 1. attach到java的进程
+
+```bash
+cd agent所在目录
+java -Xbootclasspath/a:"%JAVA_HOME%\lib\tools.jar" -jar jvm-eye-agent-1.0.jar jvm的PID(JPS获取) jvm的服务名 127.0.0.1 5555
+```
+
+例如，jps获取的PID为12345，jvm的服务名为DemoSimple，那么执行如下命令即可：
+
+```bash
+java -Xbootclasspath/a:"%JAVA_HOME%\lib\tools.jar" -jar jvm-eye-agent-1.0.jar 12345 DemoSimple 127.0.0.1 5555
+```
+
+
+
+### 2. 启动server
+
+```
+java -jar jvm-eye-server-1.0.jar
+```
+
+### 3. 浏览器可视化诊断
+
+访问地址：http://localhost:9099
+
+![image-20221208092719494](images/image-20221208092719494.png)
+
+
+
+# 本地构建体验
+
 ### 1. 代码下载和构建
 
 ```
